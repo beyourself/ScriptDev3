@@ -1075,6 +1075,7 @@ void AddSC_guards();
 void AddSC_item_scripts();
 void AddSC_npc_professions();
 void AddSC_npcs_special();
+void AddSC_teleport();
 void AddSC_spell_scripts();
 void AddSC_world_map_scripts();
 #if defined (WOTLK) || defined (CATA)
@@ -1091,6 +1092,7 @@ void AddWorldScripts()
     AddSC_item_scripts();
     AddSC_npc_professions();
     AddSC_npcs_special();
+	AddSC_teleport();
     AddSC_spell_scripts();
     AddSC_world_map_scripts();
 #if defined (WOTLK) || defined (CATA)

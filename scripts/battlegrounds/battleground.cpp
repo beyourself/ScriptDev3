@@ -113,6 +113,8 @@ struct npc_spirit_guide : public CreatureScript
             }
         }
 
+
+
 #if defined (TBC) || defined (WOTLK) || defined (CATA)    
         void SpellHitTarget(Unit* pUnit, const SpellEntry* pSpellEntry) override
         {
@@ -123,12 +125,12 @@ struct npc_spirit_guide : public CreatureScript
 #endif
     };
 
-#if defined (TBC) || defined (WOTLK) || defined (CATA)    
+//#if defined (TBC) || defined (WOTLK) || defined (CATA)    
     CreatureAI* GetAI(Creature* pCreature) override
     {
         return new npc_spirit_guideAI(pCreature);
     }
-#endif
+//#endif
 };
 
 void AddSC_battleground()

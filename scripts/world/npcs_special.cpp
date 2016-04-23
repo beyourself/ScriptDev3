@@ -42,6 +42,7 @@
 /**
  * ContentData
  * npc_chicken_cluck          100%    support for quest 3861 (Cluck!)
+ * npc_training_dummy         100%    Used for training dummy
 #if defined (TBC) || defined (WOTLK) || defined (CATA)  
  * npc_air_force_bots          80%    support for misc (invisible) guard bots in areas where player allowed to fly. Summon guards after a preset time if tagged by spell
  * npc_dancing_flames         100%    midsummer event NPC
@@ -297,6 +298,54 @@ struct npc_air_force_bots : public CreatureScript
     }
 };
 #endif
+
+/*########
+# npc_training_dummy
+#########*/
+
+#define OUT_OF_COMBAT_TIME 5000
+
+struct  npc_training_dummy : public CreatureScript
+{
+	npc_training_dummy() : CreatureScript("npc_training_dummy") {}
+
+	struct npc_training_dummyAI : public ScriptedAI
+	{
+		npc_training_dummyAI(Creature* pCreature) : ScriptedAI(pCreature) { }
+
+		uint32 combat_timer;
+
+		void Reset() override
+		{
+			combat_timer = 0;
+		}
+
+		void DamageTaken(Unit* pDoneBy, uint32 &uiDamage) override
+		{
+			combat_timer = 0;
+        }
+
+		void UpdateAI(const uint32 uiDiff) override
+		{
+			if (!m_creature->SelectHostileTarget() || !m_creature->getVictim())
+				return;
+
+			m_creature->SetHealth(m_creature->GetMaxHealth());
+
+			combat_timer += uiDiff;
+			if (combat_timer > OUT_OF_COMBAT_TIME)
+				EnterEvadeMode();
+		}
+	};
+
+	CreatureAI* GetAI(Creature* pCreature) override
+	{
+		return new npc_training_dummyAI(pCreature);
+	}
+};
+
+
+
 
 /*########
 # npc_chicken_cluck
@@ -1632,6 +1681,8 @@ void AddSC_npcs_special()
     Script* s;
     s = new npc_chicken_cluck();
     s->RegisterSelf();
+	s = new npc_training_dummy();
+	s->RegisterSelf();
 
 #if defined (TBC) || defined (WOTLK) || defined (CATA)  
     s = new npc_air_force_bots();
