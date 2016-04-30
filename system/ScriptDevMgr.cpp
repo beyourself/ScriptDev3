@@ -292,6 +292,8 @@ bool SD3::GossipSelect(Player* pPlayer, Creature* pCreature, uint32 uiSender, ui
         return false;
     }
 
+	pPlayer->PlayerTalkClass->ClearMenus();
+
     return pTempScript->ToCreatureScript()->OnGossipSelect(pPlayer, pCreature, uiSender, uiAction);
 }
 
@@ -305,6 +307,8 @@ bool SD3::GOGossipSelect(Player* pPlayer, GameObject* pGo, uint32 uiSender, uint
     {
         return false;
     }
+
+	pPlayer->PlayerTalkClass->ClearMenus();
 
     return pTempScript->ToGameObjectScript()->OnGossipSelect(pPlayer, pGo, uiSender, uiAction);
 }
