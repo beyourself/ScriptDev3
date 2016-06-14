@@ -276,7 +276,7 @@ bool SD3::GOGossipHello(Player* pPlayer, GameObject* pGo)
         return false;
     }
 
-    pPlayer->PlayerTalkClass->ClearMenus();
+    //pPlayer->PlayerTalkClass->ClearMenus();
 
     return pTempScript->ToGameObjectScript()->OnGossipHello(pPlayer, pGo);
 }
@@ -292,7 +292,7 @@ bool SD3::GossipSelect(Player* pPlayer, Creature* pCreature, uint32 uiSender, ui
         return false;
     }
 
-	pPlayer->PlayerTalkClass->ClearMenus();
+	//pPlayer->PlayerTalkClass->ClearMenus();
 
     return pTempScript->ToCreatureScript()->OnGossipSelect(pPlayer, pCreature, uiSender, uiAction);
 }
@@ -308,7 +308,7 @@ bool SD3::GOGossipSelect(Player* pPlayer, GameObject* pGo, uint32 uiSender, uint
         return false;
     }
 
-	pPlayer->PlayerTalkClass->ClearMenus();
+	//pPlayer->PlayerTalkClass->ClearMenus();
 
     return pTempScript->ToGameObjectScript()->OnGossipSelect(pPlayer, pGo, uiSender, uiAction);
 }
@@ -350,7 +350,7 @@ bool SD3::QuestAccept(Player* pPlayer, Creature* pCreature, const Quest* pQuest)
         return false;
     }
 
-    pPlayer->PlayerTalkClass->ClearMenus();
+    //pPlayer->PlayerTalkClass->ClearMenus();
 
     return pTempScript->ToCreatureScript()->OnQuestAccept(pPlayer, pCreature, pQuest);
 }
@@ -364,7 +364,7 @@ bool SD3::QuestRewarded(Player* pPlayer, Creature* pCreature, Quest const* pQues
         return false;
     }
 
-    pPlayer->PlayerTalkClass->ClearMenus();
+    //pPlayer->PlayerTalkClass->ClearMenus();
 
     return pTempScript->ToCreatureScript()->OnQuestRewarded(pPlayer, pCreature, pQuest);
 }
@@ -378,7 +378,7 @@ uint32 SD3::GetNPCDialogStatus(Player* pPlayer, Creature* pCreature)
         return DIALOG_STATUS_UNDEFINED;
     }
 
-    pPlayer->PlayerTalkClass->ClearMenus();
+    //pPlayer->PlayerTalkClass->ClearMenus();
 
     return pTempScript->ToCreatureScript()->OnDialogEnd(pPlayer, pCreature);
 }
@@ -392,7 +392,7 @@ uint32 SD3::GetGODialogStatus(Player* pPlayer, GameObject* pGo)
         return DIALOG_STATUS_UNDEFINED;
     }
 
-    pPlayer->PlayerTalkClass->ClearMenus();
+    //pPlayer->PlayerTalkClass->ClearMenus();
 
     return pTempScript->ToGameObjectScript()->OnDialogEnd(pPlayer, pGo);
 }
@@ -406,7 +406,7 @@ bool SD3::ItemQuestAccept(Player* pPlayer, Item* pItem, Quest const* pQuest)
         return false;
     }
 
-    pPlayer->PlayerTalkClass->ClearMenus();
+   // pPlayer->PlayerTalkClass->ClearMenus();
 
     return pTempScript->ToItemScript()->OnQuestAccept(pPlayer, pItem, pQuest);
 }
@@ -432,7 +432,7 @@ bool SD3::GOQuestAccept(Player* pPlayer, GameObject* pGo, const Quest* pQuest)
         return false;
     }
 
-    pPlayer->PlayerTalkClass->ClearMenus();
+    //pPlayer->PlayerTalkClass->ClearMenus();
 
     return pTempScript->ToGameObjectScript()->OnQuestAccept(pPlayer, pGo, pQuest);
 }
@@ -446,7 +446,7 @@ bool SD3::GOQuestRewarded(Player* pPlayer, GameObject* pGo, Quest const* pQuest)
         return false;
     }
 
-    pPlayer->PlayerTalkClass->ClearMenus();
+    //pPlayer->PlayerTalkClass->ClearMenus();
 
     return pTempScript->ToGameObjectScript()->OnQuestRewarded(pPlayer, pGo, pQuest);
 }
